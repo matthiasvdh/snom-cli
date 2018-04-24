@@ -219,7 +219,7 @@ class HTTPSSafeAuth(SafeTransport):
             auth = b64encode(bytes(self.user + ':' + self.password, "utf-8")).decode("ascii")
         else:
             auth = b64encode(self.user + ':' + self.password)
-        connection.putheader('Content-Type', 'text/xml')
+        connection.putheader('Content-Type', 'text/xml; charset=utf-8')
         connection.putheader('Authorization', 'Basic %s' % auth)
         connection.putheader("Content-Length", str(len(request_body)))
         connection.endheaders()
